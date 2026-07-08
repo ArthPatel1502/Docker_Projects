@@ -122,3 +122,178 @@ docker run first-docker-file
 ---
 
 ⭐ If you found this project useful, consider giving it a **Star** on GitHub.
+
+## 🚀 Getting Started
+
+### 1️⃣ Clone the Repository
+
+```bash
+git clone https://github.com/ArthPatel1502/first-docker-project.git
+cd first-docker-project
+```
+
+---
+
+### 2️⃣ Verify the Project Structure
+
+```text
+.
+├── Dockerfile
+├── app.py
+└── README.md
+```
+
+---
+
+### 3️⃣ Build the Docker Image
+
+Build a Docker image from the `Dockerfile`.
+
+```bash
+docker build -t first-docker-file .
+```
+
+To verify the image has been created:
+
+```bash
+docker images
+```
+
+Example output:
+
+```text
+REPOSITORY          TAG       IMAGE ID       CREATED
+first-docker-file   latest    xxxxxxxxxxxx   10 seconds ago
+```
+
+---
+
+### 4️⃣ Run the Docker Container
+
+Run the application inside a container.
+
+```bash
+docker run first-docker-file
+```
+
+If your application requires interactive mode:
+
+```bash
+docker run -it first-docker-file
+```
+
+If your application exposes a port (example: 5000):
+
+```bash
+docker run -p 5000:5000 first-docker-file
+```
+
+---
+
+### 5️⃣ View Running Containers
+
+```bash
+docker ps
+```
+
+To view all containers (including stopped ones):
+
+```bash
+docker ps -a
+```
+
+---
+
+### 6️⃣ Stop a Running Container
+
+Find the container ID:
+
+```bash
+docker ps
+```
+
+Stop it:
+
+```bash
+docker stop <container_id>
+```
+
+---
+
+### 7️⃣ Remove a Container
+
+```bash
+docker rm <container_id>
+```
+
+---
+
+### 8️⃣ Remove the Docker Image
+
+```bash
+docker rmi first-docker-file
+```
+
+---
+
+### 9️⃣ Push the Image to Docker Hub
+
+Login to Docker Hub:
+
+```bash
+docker login
+```
+
+Tag the image:
+
+```bash
+docker tag first-docker-file arthpatel15/first-docker-file:latest
+```
+
+Push the image:
+
+```bash
+docker push arthpatel15/first-docker-file:latest
+```
+
+---
+
+## 🔄 Complete Workflow
+
+```text
+Write Python Application
+        │
+        ▼
+Create Dockerfile
+        │
+        ▼
+Build Docker Image
+        │
+docker build -t first-docker-file .
+        │
+        ▼
+Verify Image
+        │
+docker images
+        │
+        ▼
+Run Container
+        │
+docker run first-docker-file
+        │
+        ▼
+View Running Containers
+        │
+docker ps
+        │
+        ▼
+Stop Container
+        │
+docker stop <container_id>
+        │
+        ▼
+Push Image to Docker Hub
+        │
+docker push arthpatel15/first-docker-file:latest
+```
+

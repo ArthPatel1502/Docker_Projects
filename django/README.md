@@ -1,299 +1,38 @@
-# Dockerizing a Python Application 🐳
+# Django in Docker
 
-A simple project demonstrating how to containerize a Python application using Docker. This project showcases the fundamentals of creating Docker images, building containers, and running Python applications inside an isolated environment.
+A simple Django project containerized with Docker to demonstrate the fundamentals of building, running, and managing web applications in isolated environments.
 
----
+## Features
 
-## 📌 Overview
+- Django 6.x application
+- Dockerized setup for easy deployment
+- Reproducible development environment
 
-This project packages a Python application into a Docker container using a custom `Dockerfile`. By leveraging Docker, the application can run consistently across different systems without worrying about dependency or environment issues.
+## Getting Started
 
----
+### Build the Docker image
 
-## 🚀 Features
+```bash
+docker build -t django-app .
+```
 
-* Containerized Python application
-* Custom Docker image creation
-* Ubuntu-based Docker image
-* Isolated and portable execution environment
-* Easy to build and run
+### Run the container
 
----
+```bash
+docker run -p 8000:8000 django-app
+```
 
-## 🛠️ Tech Stack
+Visit `http://localhost:8000` (or `http://<server-ip>:8000` when running on a remote server).
 
-* Docker
-* Python 3
-* Ubuntu
-
----
-
-## 📂 Project Structure
+## Project Structure
 
 ```text
 .
 ├── Dockerfile
-├── app.py
-└── README.md
+├── manage.py
+└── docker_django_project/
 ```
 
----
+## Note
 
-## 📄 Dockerfile
-
-```dockerfile
-FROM ubuntu:latest
-
-# Set the working directory in the image
-WORKDIR /app
-
-# Copy the files from the host file system to the image file system
-COPY . /app
-
-# Install the necessary packages
-RUN apt-get update && apt-get install -y python3 python3-pip
-
-# Set environment variables
-ENV NAME World
-
-# Run the application
-CMD ["python3", "app.py"]
-```
-
----
-
-## ⚙️ Build the Docker Image
-
-```bash
-docker build -t first-docker-file .
-```
-
----
-
-## ▶️ Run the Docker Container
-
-```bash
-docker run first-docker-file
-```
-
----
-
-## 📚 Docker Concepts Demonstrated
-
-* Creating a custom Docker image
-* Understanding Dockerfile instructions
-* Using an Ubuntu base image
-* Setting a working directory
-* Copying application files into the image
-* Installing dependencies during image build
-* Using environment variables
-* Running a Python application inside a container
-
----
-
-## 📖 What I Learned
-
-* Fundamentals of Docker and containerization
-* Difference between Docker Images and Containers
-* Writing and understanding Dockerfiles
-* Building Docker images using `docker build`
-* Running containers using `docker run`
-* Managing application dependencies inside containers
-
----
-
-## 🚀 Future Improvements
-
-* Switch to the official `python:3.x-slim` base image for a smaller image size
-* Add a `.dockerignore` file
-* Push the image to Docker Hub
-* Use Docker Compose for multi-container applications
-* Optimize the image using multi-stage builds
-
----
-
-## 👨‍💻 Author
-
-**Arth Patel**
-
-* GitHub: https://github.com/ArthPatel1502
-* Docker Hub: https://hub.docker.com/u/arthpatel15
-
----
-
-⭐ If you found this project useful, consider giving it a **Star** on GitHub.
-
-## 🚀 Getting Started
-
-### 1️⃣ Clone the Repository
-
-```bash
-git clone https://github.com/ArthPatel1502/first-docker-project.git
-cd first-docker-project
-```
-
----
-
-### 2️⃣ Verify the Project Structure
-
-```text
-.
-├── Dockerfile
-├── app.py
-└── README.md
-```
-
----
-
-### 3️⃣ Build the Docker Image
-
-Build a Docker image from the `Dockerfile`.
-
-```bash
-docker build -t first-docker-file .
-```
-
-To verify the image has been created:
-
-```bash
-docker images
-```
-
-Example output:
-
-```text
-REPOSITORY          TAG       IMAGE ID       CREATED
-first-docker-file   latest    xxxxxxxxxxxx   10 seconds ago
-```
-
----
-
-### 4️⃣ Run the Docker Container
-
-Run the application inside a container.
-
-```bash
-docker run first-docker-file
-```
-
-If your application requires interactive mode:
-
-```bash
-docker run -it first-docker-file
-```
-
-If your application exposes a port (example: 5000):
-
-```bash
-docker run -p 5000:5000 first-docker-file
-```
-
----
-
-### 5️⃣ View Running Containers
-
-```bash
-docker ps
-```
-
-To view all containers (including stopped ones):
-
-```bash
-docker ps -a
-```
-
----
-
-### 6️⃣ Stop a Running Container
-
-Find the container ID:
-
-```bash
-docker ps
-```
-
-Stop it:
-
-```bash
-docker stop <container_id>
-```
-
----
-
-### 7️⃣ Remove a Container
-
-```bash
-docker rm <container_id>
-```
-
----
-
-### 8️⃣ Remove the Docker Image
-
-```bash
-docker rmi first-docker-file
-```
-
----
-
-### 9️⃣ Push the Image to Docker Hub
-
-Login to Docker Hub:
-
-```bash
-docker login
-```
-
-Tag the image:
-
-```bash
-docker tag first-docker-file arthpatel15/first-docker-file:latest
-```
-
-Push the image:
-
-```bash
-docker push arthpatel15/first-docker-file:latest
-```
-
----
-
-## 🔄 Complete Workflow
-
-```text
-Write Python Application
-        │
-        ▼
-Create Dockerfile
-        │
-        ▼
-Build Docker Image
-        │
-docker build -t first-docker-file .
-        │
-        ▼
-Verify Image
-        │
-docker images
-        │
-        ▼
-Run Container
-        │
-docker run first-docker-file
-        │
-        ▼
-View Running Containers
-        │
-docker ps
-        │
-        ▼
-Stop Container
-        │
-docker stop <container_id>
-        │
-        ▼
-Push Image to Docker Hub
-        │
-docker push arthpatel15/first-docker-file:latest
-```
-
+This project uses Django’s built-in development server and is intended for learning and experimentation. For production deployments, use a production-grade server such as Gunicorn behind a reverse proxy such as Nginx.
